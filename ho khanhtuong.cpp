@@ -51,8 +51,7 @@ void phim2()
    }
     
 }
-// tinh tong cac phan tu chia het cho 3
-{
+void chia3(){
 	int arr[10][10] = {
 		{2, 3, 5, 7, 11, 13, 17, 19, 23, 29},
 		{4, 6, 8, 10, 12, 14, 16, 18, 20, 22,},
