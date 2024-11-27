@@ -1,0 +1,60 @@
+create database QUANLYDIEMSV
+use QUANLYDIEMSV
+
+create table DMKHOA
+(
+MAKHOA char(2) primary key not null,
+TENKHOA nvarchar (30),
+)
+create table DMSV
+(
+MASV char(3) primary key not null,
+HOSV nvarchar (30),
+TENSV nvarchar (20),
+phai char(3) constraint DMSV_Phai_FK check (Phai in ('NAM','NU')),
+NGAYSINH datetime,
+NOISINH nvarchar (25),
+MAKHOA char(2) constraint RB_MKHOA foreign key(MAKHOA) references DMKHOA(MAKHOA),
+HOCBPONG float,
+)
+create table DMMH
+(
+MAMH char (2) primary key not null,
+TENMH nvarchar (30),
+SOTIET int,
+)
+create table KETQUA
+(
+MASV char(3) not null,
+MAMH char(2) not null,
+LANTHI int   not null,
+DIEM decimal (4,2),
+constraint RB_PK primary key (MASV,MAMH,LANTHI),
+constraint RB_MASV_FK foreign key(MASV) references DMSV(MASV),
+constraint RB_MAMH_FK foreign key(MAMH) references DMSV(MAMH),
+)
+insert into DMKHOA values ('AV',N'Anh Văn')
+insert into DMKHOA values ('TN',N'Tin Học')
+insert into DMKHOA values ('TR',N'Triết Học')
+insert into DMKHOA values ('VL',N'Vật lý')
+
+insert into DMMH values ('01',N'Cơ sở dữ liệu','45')
+insert into DMMH values ('02',N'Trí tuệ nhân tạo','45')
+insert into DMMH values ('03',N'Truyền tin','45')
+insert into DMMH values ('04',N'Đồ họa','45')
+insert into DMMH values ('05',N'Văn phạm','45')
+insert into DMMH values ('06',N'Kỹ thuật lập trình','45')
+
+insert into DMSV values ('A01',N'Nguyễn thị',N'Hải','NU','0')
+insert into DMSV values ('A02',N'Trần văn',N'Chính','Nam','0')
+insert into DMSV values ('A03',N'Lê thu bạch',N'Yến','NU','0')
+insert into DMSV values ('A04',N'Trần anh',N'Tuấn','Nam','0')
+insert into DMSV values ('B01',N'Trần thanh',N'Mai','NU','0')
+insert into DMSV values ('B02',N'Trần thị thu',N'Thủy','NU','0')
+
+
+
+
+
+
+
