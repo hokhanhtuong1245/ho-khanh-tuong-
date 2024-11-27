@@ -1,0 +1,38 @@
+create database QUANLYDIEMSV
+use QUANLYDIEMSV
+
+create table DAKHOA
+(
+MAKHOA char(2) primary key not null,
+TENKHOA nvarchar (30),
+)
+create table DMSV
+(
+MASV char(3) primary key not null,
+HOSV nvarchar (30),
+TENSV nvarchar (20),
+phai char(3) constraint DMSV_Phai_FK check (Phai in ('NAM','NU')),
+NGAYSINH datetime,
+NOISINH nvarchar (25),
+MAKHOA char(2) constraint RB_MKHOA foreign key(MAKHOA) references DMKHOA(MAKHOA),
+HOCBPONG float,
+)
+create table DMMH
+(
+MAMH char (2) primary key not null,
+TENMH nvarchar (30),
+SOTIET int,
+)
+create table KETQUA
+(
+MASV char(3) not null,
+MAMH char(2) not null,
+LANTHI int   not null,
+DIEM decimal (4,2),
+const
+
+
+
+
+
+
